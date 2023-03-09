@@ -1,14 +1,14 @@
 #include "mbed.h"
 #include "i2c-lcd.h"
-#include <string.h>
+#include <string>
 using namespace std;
 
 int row=0;
 int col=0;
 
-char *test = "Hallo";
+string teststring;
 
-//string testString;
+char *test = NULL;
 
 // Für LCD auf Basis-Board:
 // Brücke von D15(SCL) -> PA_11
@@ -21,7 +21,9 @@ int main() {
 
     lcd_put_cur(0, 0);
 
-    lcd_send_string ("Hallo");
+    teststring = "Ein Teststring 9";
+    test = (char *) teststring.c_str();
+    lcd_send_string (test);
 
     ThisThread::sleep_for(2000ms);
 
