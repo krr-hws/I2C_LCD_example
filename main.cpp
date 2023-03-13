@@ -7,6 +7,7 @@ int row=0;
 int col=0;
 
 string teststring;
+int testnum = 3;
 
 char *test = NULL;
 
@@ -21,6 +22,7 @@ int main() {
 
     lcd_put_cur(0, 0);
 
+    // einen String ausgeben
     teststring = "Ein Teststring 9";
     test = (char *) teststring.c_str();
     lcd_send_string (test);
@@ -29,7 +31,13 @@ int main() {
 
     lcd_put_cur(1, 0);
 
-    lcd_send_string("Welt");
+    // eine Zahl ausgeben
+    teststring = std::to_string(testnum);
+    test = (char *) teststring.c_str();
+    lcd_send_string(test);
+    
+    // text direkt ausgeben
+    //lcd_send_string("Hallo Welt");
 
     ThisThread::sleep_for(2000ms);
 
